@@ -2,6 +2,9 @@ package cl.pago.qr.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class PagoQrApiApplication {
@@ -10,4 +13,15 @@ public class PagoQrApiApplication {
         SpringApplication.run(PagoQrApiApplication.class, args);
     }
 
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/pagos/**")
+                        .allowedMethods("GET", "PUT")
+                        .allowedOrigins("http://localhost:5173");
+            }
+        };
+    }
 }

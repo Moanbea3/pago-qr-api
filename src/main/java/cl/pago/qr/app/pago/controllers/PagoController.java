@@ -18,6 +18,7 @@ public class PagoController {
         this.pagoService = pagoService;
     }
 
+    @GetMapping("/{idTrx}")
     @Operation(summary = "Obtiene el pago por su id de transacción")
     @ApiResponses(value = {
             @ApiResponse(
@@ -36,11 +37,11 @@ public class PagoController {
                     content = @Content
             )
     })
-    @GetMapping("/{idTrx}")
     public PagoDto obtenerPago(@PathVariable Integer idTrx) {
         return pagoService.obtenerPago(idTrx);
     }
 
+    @PutMapping("/{idTrx}/aprobar")
     @Operation(summary = "Intenta aprobar el pago solicitado por su id de transacción")
     @ApiResponses(value = {
             @ApiResponse(
@@ -59,11 +60,11 @@ public class PagoController {
                     content = @Content
             )
     })
-    @PutMapping("/{idTrx}/aprobar")
     public PagoDto aprobarPago(@PathVariable Integer idTrx) {
         return pagoService.aprobarPago(idTrx);
     }
 
+    @PutMapping("/{idTrx}/rechazar")
     @Operation(summary = "Intenta aprobar el pago solicitado por su id de transacción")
     @ApiResponses(value = {
             @ApiResponse(
@@ -82,7 +83,6 @@ public class PagoController {
                     content = @Content
             )
     })
-    @PutMapping("/{idTrx}/rechazar")
     public PagoDto rechazarPago(@PathVariable Integer idTrx) {
         return pagoService.rechazarPago(idTrx);
     }
