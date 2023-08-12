@@ -23,13 +23,13 @@ public class PagoServiceImpl implements PagoService {
 
     @Override
     public PagoDto obtenerPago(Integer idTrx) throws NoSuchElementException {
-        Pago pago = pagoRepository.findById(idTrx).orElseThrow();
+        Pago pago = pagoRepository.findByTrx(idTrx).orElseThrow();
         return pagoMapper.toDto(pago);
     }
 
     @Override
     public PagoDto aprobarPago(Integer idTrx) throws NoSuchElementException {
-        Pago pago = pagoRepository.findById(idTrx).orElseThrow();
+        Pago pago = pagoRepository.findByTrx(idTrx).orElseThrow();
         pago.setCodRespuesta(EstadoPago.APROBADO.getEstado());
         pago.setEstado(TextoEstadoPago.APROBADO.getEstado());
         return pagoMapper.toDto(pagoRepository.save(pago));
@@ -37,7 +37,7 @@ public class PagoServiceImpl implements PagoService {
 
     @Override
     public PagoDto rechazarPago(Integer idTrx) throws NoSuchElementException {
-        Pago pago = pagoRepository.findById(idTrx).orElseThrow();
+        Pago pago = pagoRepository.findByTrx(idTrx).orElseThrow();
         pago.setCodRespuesta(EstadoPago.RECHAZADO.getEstado());
         pago.setEstado(TextoEstadoPago.RECHAZADO.getEstado());
         return pagoMapper.toDto(pagoRepository.save(pago));
