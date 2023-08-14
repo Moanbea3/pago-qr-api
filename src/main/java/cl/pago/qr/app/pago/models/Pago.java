@@ -1,4 +1,4 @@
-package cl.pago.qr.app.pago.model;
+package cl.pago.qr.app.pago.models;
 
 import jakarta.persistence.*;
 import lombok.*;

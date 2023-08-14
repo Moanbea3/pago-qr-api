@@ -1,6 +1,6 @@
-package cl.pago.qr.app.pago.repository;
+package cl.pago.qr.app.pago.repositories;
 
-import cl.pago.qr.app.pago.model.Pago;
+import cl.pago.qr.app.pago.models.Pago;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

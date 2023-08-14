@@ -1,4 +1,4 @@
-package cl.pago.qr.app.pago.model.enums;
+package cl.pago.qr.app.pago.models.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

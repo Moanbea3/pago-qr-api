@@ -1,7 +1,7 @@
-package cl.pago.qr.app.pago.mapper;
+package cl.pago.qr.app.pago.mappers;
 
-import cl.pago.qr.app.pago.model.Pago;
-import cl.pago.qr.app.pago.model.PagoDto;
+import cl.pago.qr.app.pago.models.Pago;
+import cl.pago.qr.app.pago.models.PagoDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
