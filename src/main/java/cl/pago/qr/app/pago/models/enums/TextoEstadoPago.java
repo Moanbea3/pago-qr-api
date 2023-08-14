@@ -8,5 +8,5 @@ import lombok.Getter;
 public enum TextoEstadoPago {
     APROBADO("Aprobado"),
     RECHAZADO("Rechazado");
-    private final String estado;
+    private final String value;
 }

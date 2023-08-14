@@ -31,27 +31,27 @@ public class PagoServiceImpl implements PagoService {
     @Override
     public PagoDto aprobarPago(Integer idTrx) {
         Pago pago = pagoRepository.findByTrx(idTrx).orElseThrow(() -> new PagoNotFoundException(idTrx));
-        checkEstadoPagoIsStillPendiente(pago.getEstado());
-        pago.setCodRespuesta(EstadoPago.APROBADO.getEstado());
-        pago.setEstado(TextoEstadoPago.APROBADO.getEstado());
+        checkEstadoPagoIsStillPendiente(pago.getCodRespuesta());
+        pago.setCodRespuesta(EstadoPago.APROBADO.getValue());
+        pago.setEstado(TextoEstadoPago.APROBADO.getValue());
         return pagoMapper.toDto(pagoRepository.save(pago));
     }
 
     @Override
     public PagoDto rechazarPago(Integer idTrx) {
         Pago pago = pagoRepository.findByTrx(idTrx).orElseThrow(() -> new PagoNotFoundException(idTrx));
-        checkEstadoPagoIsStillPendiente(pago.getEstado());
-        pago.setCodRespuesta(EstadoPago.RECHAZADO.getEstado());
-        pago.setEstado(TextoEstadoPago.RECHAZADO.getEstado());
+        checkEstadoPagoIsStillPendiente(pago.getCodRespuesta());
+        pago.setCodRespuesta(EstadoPago.RECHAZADO.getValue());
+        pago.setEstado(TextoEstadoPago.RECHAZADO.getValue());
         return pagoMapper.toDto(pagoRepository.save(pago));
     }
 
-    private void checkEstadoPagoIsStillPendiente(String estadoPago) {
-        if (estadoPago.equalsIgnoreCase(TextoEstadoPago.APROBADO.getEstado())) {
+    private void checkEstadoPagoIsStillPendiente(Integer estadoPago) {
+        if (estadoPago.equals(EstadoPago.APROBADO.getValue())) {
             throw new PagoAlreadyApprovedException();
         }
 
-        if (estadoPago.equalsIgnoreCase(TextoEstadoPago.RECHAZADO.getEstado())) {
+        if (estadoPago.equals(EstadoPago.RECHAZADO.getValue())) {
             throw new PagoAlreadyRejectedException();
         }
     }

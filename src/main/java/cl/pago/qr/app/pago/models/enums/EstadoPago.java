@@ -8,7 +8,7 @@ import lombok.Getter;
 public enum EstadoPago {
     APROBADO(0),
     RECHAZADO(1);
-    private final Integer estado;
+    private final Integer value;
 }
 
 
