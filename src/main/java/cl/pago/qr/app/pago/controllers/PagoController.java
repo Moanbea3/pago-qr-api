@@ -52,12 +52,7 @@ public class PagoController {
             @ApiResponse(
                     responseCode = "200",
                     description = "El pago se aprueba exitosamente",
-                    content = {
-                            @Content(
-                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                    schema = @Schema(implementation = PagoDto.class)
-                            )
-                    }
+                    content = @Content
             ),
             @ApiResponse(
                     responseCode = "400",
@@ -76,8 +71,8 @@ public class PagoController {
                     )
             )
     })
-    public PagoDto aprobarPago(@PathVariable Integer idTrx) {
-        return pagoService.aprobarPago(idTrx);
+    public void aprobarPago(@PathVariable Integer idTrx) {
+        pagoService.aprobarPago(idTrx);
     }
 
     @PutMapping("/{idTrx}/rechazar")
@@ -86,12 +81,7 @@ public class PagoController {
             @ApiResponse(
                     responseCode = "200",
                     description = "El pago se rechaza exitosamente",
-                    content = {
-                            @Content(
-                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                    schema = @Schema(implementation = PagoDto.class)
-                            )
-                    }
+                    content = @Content
             ),
             @ApiResponse(
                     responseCode = "400",
@@ -110,7 +100,7 @@ public class PagoController {
                     )
             )
     })
-    public PagoDto rechazarPago(@PathVariable Integer idTrx) {
-        return pagoService.rechazarPago(idTrx);
+    public void rechazarPago(@PathVariable Integer idTrx) {
+        pagoService.rechazarPago(idTrx);
     }
 }

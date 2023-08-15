@@ -29,21 +29,21 @@ public class PagoServiceImpl implements PagoService {
     }
 
     @Override
-    public PagoDto aprobarPago(Integer idTrx) {
+    public void aprobarPago(Integer idTrx) {
         Pago pago = pagoRepository.findByTrx(idTrx).orElseThrow(() -> new PagoNotFoundException(idTrx));
         checkEstadoPagoIsStillPendiente(pago.getCodRespuesta());
         pago.setCodRespuesta(EstadoPago.APROBADO.getValue());
         pago.setEstado(TextoEstadoPago.APROBADO.getValue());
-        return pagoMapper.toDto(pagoRepository.save(pago));
+        pagoRepository.save(pago);
     }
 
     @Override
-    public PagoDto rechazarPago(Integer idTrx) {
+    public void rechazarPago(Integer idTrx) {
         Pago pago = pagoRepository.findByTrx(idTrx).orElseThrow(() -> new PagoNotFoundException(idTrx));
         checkEstadoPagoIsStillPendiente(pago.getCodRespuesta());
         pago.setCodRespuesta(EstadoPago.RECHAZADO.getValue());
         pago.setEstado(TextoEstadoPago.RECHAZADO.getValue());
-        return pagoMapper.toDto(pagoRepository.save(pago));
+        pagoRepository.save(pago);
     }
 
     private void checkEstadoPagoIsStillPendiente(Integer estadoPago) {

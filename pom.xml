@@ -10,7 +10,7 @@
     </parent>
     <groupId>cl.pago.qr</groupId>
     <artifactId>pago-qr-api</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <name>pago-qr-api</name>
     <description>pago-qr-api</description>
     <properties>

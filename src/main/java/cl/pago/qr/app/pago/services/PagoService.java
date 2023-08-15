@@ -7,6 +7,6 @@ import cl.pago.qr.app.pago.models.PagoDto;
 
 public interface PagoService {
     PagoDto obtenerPago(Integer idTrx) throws PagoNotFoundException;
-    PagoDto aprobarPago(Integer idTrx) throws PagoNotFoundException, PagoAlreadyApprovedException, PagoAlreadyRejectedException;
-    PagoDto rechazarPago(Integer idTrx)  throws PagoNotFoundException, PagoAlreadyApprovedException, PagoAlreadyRejectedException;
+    void aprobarPago(Integer idTrx) throws PagoNotFoundException, PagoAlreadyApprovedException, PagoAlreadyRejectedException;
+    void rechazarPago(Integer idTrx)  throws PagoNotFoundException, PagoAlreadyApprovedException, PagoAlreadyRejectedException;
 }
