@@ -76,7 +76,7 @@ public class PagoController {
     }
 
     @PutMapping("/{idTrx}/rechazar")
-    @Operation(summary = "Intenta aprobar el pago solicitado por su id de transacción")
+    @Operation(summary = "Intenta rechazar el pago solicitado por su id de transacción")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",

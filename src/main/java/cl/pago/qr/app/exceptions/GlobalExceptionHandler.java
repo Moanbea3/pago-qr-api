@@ -25,20 +25,11 @@ public class GlobalExceptionHandler {
                 .body(error);
     }
 
-    @ExceptionHandler(PagoAlreadyApprovedException.class)
-    public ResponseEntity<ApiError> handlePagoAlreadyApproved(PagoAlreadyApprovedException ex) {
-        ApiError error = ApiError.builder()
-                .statusCode(HttpStatus.BAD_REQUEST.value())
-                .message(ex.getMessage())
-                .timestamp(LocalDateTime.now())
-                .build();
-        return ResponseEntity
-                .badRequest()
-                .body(error);
-    }
-
-    @ExceptionHandler(PagoAlreadyRejectedException.class)
-    public ResponseEntity<ApiError> handlePagoAlreadyRejected(PagoAlreadyRejectedException ex) {
+    @ExceptionHandler({
+            PagoAlreadyApprovedException.class,
+            PagoAlreadyRejectedException.class
+    })
+    public ResponseEntity<ApiError> handlePagoAlreadyApprovedOrRejected(RuntimeException ex) {
         ApiError error = ApiError.builder()
                 .statusCode(HttpStatus.BAD_REQUEST.value())
                 .message(ex.getMessage())
